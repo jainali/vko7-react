@@ -1,3 +1,10 @@
+Kehitysympäristön pystytys:
+npm install
+npm install --save react-router-dom
+npm install --save reactstrap react react-dom
+npm install --save availity-reactstrap-validation react react-dom
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
