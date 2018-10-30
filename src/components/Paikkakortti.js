@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class Paikkakortti extends Component {
 
@@ -7,7 +8,7 @@ class Paikkakortti extends Component {
     render() {
         return (
             <div>
-                {this.props.paikka.Nimi}
+                <Link to={`/paikat/${this.props.paikka.Nimi}`}>{this.props.paikka.Nimi}</Link>
             </div>
         );
     }

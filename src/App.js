@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Etusivu from './views/Etusivu';
-import Paikka from './views/Paikka';
-import Kirjaudu from './views/Kirjaudu';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import {
   Collapse,
   Navbar,
@@ -14,20 +9,15 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+import Paarouter from './routers/Paarouter';
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Navigaatio />
-          <Switch>
-            <Route exact path="/" component={Etusivu}></Route>
-            <Route path="/paikat" component={Paikka}></Route>
-            <Route path="/kirjaudu" component={Kirjaudu}></Route>
-          </Switch>
-        </div>
-      </Router>
+      <div>
+        <Navigaatio />
+        <Paarouter />
+      </div>
     );
   }
 }

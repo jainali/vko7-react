@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
+// 
+
 class Kommentti extends Component {
     render() {
         return (
             <div>
-                {this.props.kommentti.Teksti}
+                Arvosana: {this.props.kommentti.Arvosana}<br/>
+                <i>{this.props.kommentti.Teksti}</i><br/>
+                {/* Kommentoijan nimi */}
+                {this.props.kommentti.Aikaleima}
+                <hr/>
             </div>
         );
     }
