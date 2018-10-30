@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Jumbotron } from 'reactstrap';
 
-// Paikantiedot
+// Paikan tiedot
 // Paikkakuvaus-containerin kautta välitettyjen tietojen muotoilu
 
 class Paikantiedot extends Component {

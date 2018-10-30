@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-// 
+// Kommentti (yksittäinen kommentti)
+// Kommentit-controllerin kautta välitettyjen tietojen muotoilu
 
 class Kommentti extends Component {
     render() {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron } from 'reactstrap';
+import Paikantiedot from '../components/Paikantiedot';
 
 // Paikkakuvaus
 // Mapataan läpi Paikka-näkymän kautta tullut taulukko, joka sisältää paikan tiedot.
