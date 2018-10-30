@@ -18,11 +18,17 @@ class Koti extends Component {
         this.setState({ data: paikat })
     }
 
+    LuoPaikka=(paikka)=>{
+        console.dir(paikka);
+        this.state.data.push(paikka);
+        this.setState(this.state);
+    }
+
     render() {
         return (
             <div>
                 <Hakukentta />
-                <LisaaPaikka />
+                <LisaaPaikka paikka={this.LuoPaikka}/>
                 <Jumbotron>
                     <Paikkakortit paikat={this.state.data} />
                 </Jumbotron>
