@@ -4,9 +4,7 @@ import LisaaKommentti from '../containers/LisaaKommentti';
 import Kommentit from '../containers/Kommentit';
 import { Jumbotron} from 'reactstrap';
 
-
 class Paikat extends Component {
-
     
     state = {
         kommenttidata: [],
