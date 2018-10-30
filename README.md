@@ -1,6 +1,8 @@
 Kehitysympäristön pystytys:
 npm install
+npm  install bootstrap --save
 npm install --save react-router-dom
+npm install --save fetch
 npm install --save reactstrap react react-dom
 npm install --save availity-reactstrap-validation react react-dom
 
