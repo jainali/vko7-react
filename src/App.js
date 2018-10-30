@@ -1,28 +1,68 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Etusivu from './views/Etusivu';
+import Paikka from './views/Paikka';
+import Kirjaudu from './views/Kirjaudu';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div>
+          <Navigaatio />
+          <Switch>
+            <Route exact path="/" component={Etusivu}></Route>
+            <Route path="/paikat" component={Paikka}></Route>
+            <Route path="/kirjaudu" component={Kirjaudu}></Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
 
 export default App;
+
+class Navigaatio extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpens
+    });
+  }
+
+  render() {
+    return (
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">ETUSIVU</NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink href="/kirjaudu/">Kirjaudu</NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    );
+  }
+}
