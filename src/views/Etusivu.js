@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
-import {
-    Card, Button, CardImg, CardTitle, CardText, CardDeck,
-    CardSubtitle, CardBody, Jumbotron
-} from 'reactstrap';
+import { Jumbotron } from 'reactstrap';
 import Paikkakortit from '../containers/Paikkakortit';
 import Hakukentta from '../containers/Hakukentta';
 import LisaaPaikka from '../containers/LisaaPaikka';
+import { haePaikat } from '../ServiceClient';
 
 class Koti extends Component {
 
     state = {
         data: []
     }
-
-    componentDidMount() {
-        // hakee tietokannasta paikat ja laittaa data-stateen
-        this.setState({ data: paikat })
-    }
-
-    LuoPaikka=(paikka)=>{
+    
+    LuoPaikka = (paikka) => {
         console.dir(paikka);
         this.state.data.push(paikka);
         this.setState(this.state);
+    }
+    
+    componentDidMount = () => {
+        console.log("test");
+        // KOVAKOODAUS
+        // this.setState({ data: paikat })
+        haePaikat(function (paikkalista) {
+            this.setState({ data: paikkalista }, () => {
+                console.log("Here");
+                console.log(this.state.data);
+            });
+        }.bind(this));
     }
 
     render() {
         return (
             <div>
                 <Hakukentta />
-                <LisaaPaikka paikka={this.LuoPaikka}/>
+                <LisaaPaikka paikka={this.LuoPaikka} />
                 <Jumbotron>
                     <Paikkakortit paikat={this.state.data} />
                 </Jumbotron>
