@@ -3,39 +3,42 @@ import Paikkakuvaus from '../containers/Paikkakuvaus';
 import LisaaKommentti from '../containers/LisaaKommentti';
 import Kommentit from '../containers/Kommentit';
 import { Jumbotron} from 'reactstrap';
-import { haePaikat, haeKommentit } from '../ServiceClient';
+import { haePaikanTiedot, haeKommentitPaikasta } from '../ServiceClient';
 
 
 class Paikat extends Component {
     
     state = {
         kommenttidata: [],
-        paikkadata: []
+        paikkadata: [],
     }
     constructor(props) {
         super(props);
-        console.log("Paikka ctr");
-        console.log(props.match.params.Nimi);
-        
-        console.log()
     }
     
     componentDidMount() {
-        console.log("paikkaid")
-        console.log(this.props.paikkaID)
-        // haePaikka(function (paikkalista) {
-        //     this.setState({ paikkadata: paikkalista }, () => {
-        //         console.log("Paikat haettu");
-        //         console.log(this.state.paikkadata);
-        //     });
-        // }.bind(this));
+        console.log("hakemassa, " + this.props.match.params.Paikka_id);
+        haePaikanTiedot(this.props.match.params.Paikka_id, function (paikantiedot) {
+            console.log("Are you here")
+            console.log(paikantiedot);
+            this.setState({ paikkadata: paikantiedot }, () => {
+                console.log("Paikan tiedot haettu");
+                console.log(this.state.paikantiedot);
+            });
+        }.bind(this));
+
+        haeKommentitPaikasta(this.props.match.params.Paikka_id, function (kommenttilista){
+            console.log("How about here")
+            this.setState({ kommenttidata: kommenttilista }, () => {
+            });
+        
+        }.bind(this));
     }
     
     render() {
         
         return (
             <div>
-                Paikka
                 <Paikkakuvaus paikanTiedot={this.state.paikkadata}/>
                 <LisaaKommentti />
                 <Jumbotron>

@@ -14,7 +14,7 @@ class Paikantiedot extends Component {
             <Jumbotron>
                 <h2>{p.Nimi}</h2>
                 {p.Kuvaus}<br />
-                {p.Katunimi}, {p.Kaupunki}<br />
+                {p.Katuosoite}, {p.Kaupunki}<br />
                 <hr />
                 Kommentteja: {p.KommenttienMaara} kpl<br/>
                 Keskiarvo:<br/>

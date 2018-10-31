@@ -9,7 +9,7 @@ import Paikka from '../views/Paikka';
 const PaikatApurouter = () => (
     <Switch>
         <Route exact path="/paikat" component={Etusivu} />
-        <Route path="/paikat/:Nimi" component={Paikka} />
+        <Route path="/paikat/:Paikka_id" component={Paikka} />
     </Switch>
 )
 

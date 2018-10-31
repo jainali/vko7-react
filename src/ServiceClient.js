@@ -88,8 +88,8 @@ function haeKommentit(callback) {
         });
 }
 
-function haeKommentitPaikasta(callback) {
-    fetch(url + jotain)
+function haeKommentitPaikasta(paikkaID, callback) {
+    fetch("http://localhost:64463/api/kommentti/" + paikkaID)
         .then(function (response) {
             if (!response.ok) {
                 var errviesti = {
@@ -150,4 +150,4 @@ function poistaKommentti(id, callback) {
         });
 }
 
-export { haePaikat, haePaikatKaupungissa, haeKommentit, haeKommentitPaikasta, luoPaikka, luoKommentti, poistaPaikka, poistaKommentti };
+export { haePaikat, haePaikanTiedot, haePaikatKaupungissa, haeKommentit, haeKommentitPaikasta, luoPaikka, luoKommentti, poistaPaikka, poistaKommentti };

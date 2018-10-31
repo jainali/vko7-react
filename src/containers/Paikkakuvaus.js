@@ -8,7 +8,8 @@ import Paikantiedot from '../components/Paikantiedot';
 class Paikkakuvaus extends Component {
     render() {
 
-        var esiteltavaPaikka = this.props.paikanTiedot.map(function (paikka) {
+        var esiteltavaPaikka = [].concat(this.props.paikanTiedot) 
+        .map(function (paikka) {
             return (<Paikantiedot paikka={paikka} key={paikka.Paikka_id} />)
         })
 

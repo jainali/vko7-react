@@ -11,11 +11,11 @@ class Paikkakortti extends Component {
             <div class="col-sm-6 col-md-6 col-lg-4">
                 <Jumbotron>
 
-                    <h2><Link to={`/paikat/${this.props.paikka.Nimi}`}>{this.props.paikka.Nimi}</Link></h2>
+                    <h2><Link to={`/paikat/${this.props.paikka.Paikka_id}`}>{this.props.paikka.Nimi}</Link></h2>
                     {this.props.paikka.Kuvaus}<br/>
                     {/* <Button link={`/paikat/${this.props.paikka.Nimi}`>Lue lisää</Button> */}
                 
-                    <Link to={`/paikat/${this.props.paikka.Nimi}`}>Lue lisää</Link>
+                    <Link to={`/paikat/${this.props.paikka.Paikka_id}`}>Lue lisää</Link>
                 </Jumbotron>
 
             </div >
