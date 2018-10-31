@@ -48,7 +48,7 @@ class Kirjaudu extends Component {
                             className={classnames({ active: this.state.activeTab === '2' })}
                             onClick={() => { this.toggle('2'); }}>
                             <div className="Register">
-                                <Kirjautumisikkuna />
+                                Rekisteröidy
                             </div>
                         </NavLink>
                     </NavItem>
