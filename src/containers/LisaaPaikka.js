@@ -1,5 +1,4 @@
-import Form from 'react-validation/build/form';
-import Input from 'react-validation/build/input';
+import { AvForm, AvFormGroup, AvField } from 'availity-reactstrap-validation';
 import React, { Component } from 'react';
 import { UncontrolledCollapse, Card, CardBody, Jumbotron, Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
@@ -28,31 +27,37 @@ class LisaaPaikka extends Component {
         this.props.paikka(this.state);
     }
 
+    handleInvalidSubmit=()=>{
+        console.log("Invalid");
+    }
+
     render() {
         return (
             <div>
                 
-    <Button color="primary" id="toggler"  style={{ marginBottom: '1rem'}}>Lisää Paikka</Button>
+    <Button color="primary" id="toggler"  style={{ marginLeft: '1rem'}}>Lisää Paikka</Button>
         <UncontrolledCollapse toggler="#toggler">
             <Card>
                 <CardBody>
-                <Form className="LisaaPaikka">
-                    <Label for="LisaaPaikka">Yrityksen nimi / Kategoria</Label>
+                <AvForm className="LisaaPaikka" onValidSubmit={this.handleCreateClick} onInvalidSubmit={this.handleInvalidSubmit}>
                     <Row form>
                     <Col md={8}>
                     <FormGroup>
-                
-                    <Input type="text" name="Nimi" placeholder="Toimijan nimi" value={this.state.Nimi} onChange={this.handleNimiChange} validations={[required]}/>
+                    <AvField name="Nimi" label="Nimi" type="text" value={this.state.Nimi} onChange={this.handleNimiChange} errorMessage="Nimi vaaditaan" validate={{
+                     required: {value: true},
+                    minLength: {value: 2},
+                    maxLength: {value: 50}
+                     }} />
+                    {/* <Input type="text" name="Nimi" placeholder="Toimijan nimi" value={this.state.Nimi} onChange={this.handleNimiChange} required={true}/> */}
                     </FormGroup>
                     </Col>
                     <Col md={4}>
                     <FormGroup>
+                    <Label for="LisaaPaikka">Kategoria</Label>
                     <Input type="select" name="Kategoria" value={this.state.Kategoria} onChange={this.handleKategoriaChange}>
                     <option selectedvalue="Ravintola">Ravintola</option>
                     <option value="Huvitus">Huvitus</option>
                     <option value="Hotelli">Hotelli</option>
-                    <option value="">4</option>
-                    <option value="">5</option>
                     </Input>
                     </FormGroup>
                     </Col>
@@ -61,23 +66,31 @@ class LisaaPaikka extends Component {
                     <Label>Palvelu kuvaus</Label>
                     <Input type="textarea" name="Kuvaus" placeholder="Palvelun kuvaus" value={this.state.Kuvaus} onChange={this.handleKuvausChange} />
                     </FormGroup>
-                    <Label>Katuosoite /Kaupunki</Label>
                     <Row form>
                     <Col md={8}>
                     <FormGroup>
-                
-                    <Input type="text" name="Katuosoite" placeholder="Katuosoite" value={this.state.Katunimi} onChange={this.handleKatunimiChange} validations={[required]}/>
+                    <AvField name="Katuosoite" label="Katuosoite" type="text" value={this.state.Katunimi} onChange={this.handleKatunimiChange} errorMessage="Katusoite vaaditaan" validate={{
+                        required: {value: true},
+                        minLength: {value: 2},
+                        maxLength: {value: 50}
+                    }} />
+                    {/* <Input type="text" name="Katuosoite" placeholder="Katuosoite" value={this.state.Katunimi} onChange={this.handleKatunimiChange}  required={true}/> */}
                     </FormGroup>
                     </Col>
                     <Col md={4}>
                     <FormGroup>
-                    <Input type="text" name="Kaupunki" placeholder="kaupungin nimi" value={this.state.Kaupunki} onChange={this.handleKaupunkiChange} validations={[required]} />
+                    <AvField name="Kaupunki" label="Kaupunki" type="text" value={this.state.Kaupunki} onChange={this.handleKaupunkiChange} errorMessage="Kaupunki vaaditaan" validate={{
+                        required: {value: true},
+                        minLength: {value: 2},
+                        maxLength: {value: 50}
+                    }} />
+                    {/* <Input type="text" name="Kaupunki" placeholder="kaupungin nimi" value={this.state.Kaupunki} onChange={this.handleKaupunkiChange}  required={true}/> */}
                     </FormGroup>
                     </Col>
                     </Row>
-                    <Input type="submit" value="Create" onClick={this.handleCreateClick}/>
+                    <Input type="submit" value="Create" />
                     
-                </Form>
+                </AvForm>
                 </CardBody>
             </Card>
         </UncontrolledCollapse>
