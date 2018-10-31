@@ -5,6 +5,7 @@ npm install --save react-router-dom
 npm install --save fetch
 npm install --save reactstrap react react-dom
 npm install --save availity-reactstrap-validation react react-dom
+npm install --save react-star-ratings
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
