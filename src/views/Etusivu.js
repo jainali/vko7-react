@@ -34,9 +34,9 @@ class Koti extends Component {
             <div>
                 <Hakukentta />
                 <LisaaPaikka paikka={this.LuoPaikka} />
-                <Jumbotron>
+                {/* <Jumbotron> */}
                     <Paikkakortit paikat={this.state.data} />
-                </Jumbotron>
+                {/* </Jumbotron> */}
             </div>
         );
     }

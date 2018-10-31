@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Paikkakortti from '../components/Paikkakortti';
+import {
+    Container, Row, Col, CardColumns
+} from 'reactstrap';
+import MediaQuery from 'react-responsive';
 
 // Paikkakortit-container
 // Tieto tulee Etusivu-näkymän kautta.
@@ -9,19 +13,21 @@ import Paikkakortti from '../components/Paikkakortti';
 // Paikkakorttien muotoilu tapahtuu Paikkakortti-komponentissa.
 
 class Paikkakortit extends Component {
-        
+
     render() {
 
-        
+
 
         // mappaus
-        var paikat = this.props.paikat.map(function(paikka) {
-            return (<Paikkakortti paikka={paikka} key={paikka.Paikka_id}/>);
+        var paikat = this.props.paikat.map(function (paikka) {
+            return (<Paikkakortti paikka={paikka} key={paikka.Paikka_id} />);
         });
 
         return (
-            <div>                
-                {paikat}
+            <div class="container-fluid">
+                <div class="row">
+                    {paikat}
+                </div>
             </div>
         );
     }
