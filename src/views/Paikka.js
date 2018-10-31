@@ -16,17 +16,16 @@ class Paikat extends Component {
     componentDidMount() {
         console.log("hakemassa, " + this.props.match.params.Paikka_id);
         haePaikanTiedot(this.props.match.params.Paikka_id, function (paikantiedot) {
-            console.log("Are you here")
-            console.log(paikantiedot);
             this.setState({ paikkadata: paikantiedot }, () => {
-                console.log("Paikan tiedot haettu");
-                console.log(this.state.paikantiedot);
+                console.log("Paikan tiedot:");
+                console.log(this.state.paikkadata);
             });
         }.bind(this));
 
         haeKommentitPaikasta(this.props.match.params.Paikka_id, function (kommenttilista){
-            console.log("How about here")
+            console.log("Paikan saamat kommentit:")
             this.setState({ kommenttidata: kommenttilista }, () => {
+                console.log(this.state.kommenttidata);
             });
         
         }.bind(this));
@@ -37,7 +36,7 @@ class Paikat extends Component {
         return (
             <div>
                 <Paikkakuvaus paikanTiedot={this.state.paikkadata}/>
-                <LisaaKommentti />
+                <LisaaKommentti paikanTiedot={this.state.paikkadata}/>
                 <Jumbotron>
                     <Kommentit paikanKommentit={this.state.kommenttidata} />
                 </Jumbotron>

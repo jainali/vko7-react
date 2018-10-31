@@ -105,7 +105,7 @@ function luoPaikka(paikka, callback) {
 }
 
 function luoKommentti(kommentti, callback) {
-    return fetch(placeholder + jotain, {
+    return fetch(kommenttiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(kommentti)

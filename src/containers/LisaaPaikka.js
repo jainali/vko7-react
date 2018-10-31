@@ -1,11 +1,11 @@
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import React, { Component } from 'react';
 import { UncontrolledCollapse, Card, CardBody, Col, Row, Button, FormGroup, Label, Input, } from 'reactstrap';
-import {luoPaikka} from '../ServiceClient';
+import { luoPaikka } from '../ServiceClient';
 
 class LisaaPaikka extends Component {
 
-    state = { "Paikka_id": 0, "Kayttaja_id": 15, "Nimi": "", "Kuvaus": "", "Kategoria": "Ravintolat", "Katuosoite": "", "Kaupunki": "", "Maa": "Suomi", "KommenttienMaara": 0, "ArvostelujenSumma": 0 };
+    state = { "Paikka_id": 0, "Kayttaja_id": 15, "Nimi": "", "Kuvaus": "", "Kategoria": "Ravintolat", "Katuosoite": "", "Kaupunki": "", "Maa": "Suomi", "KommenttienMaara": 1, "ArvostelujenSumma": 0 };
 
     handleNimiChange = (e) => {
         this.setState({ Nimi: e.target.value });
@@ -33,12 +33,12 @@ class LisaaPaikka extends Component {
         console.log("Invalid");
     }
 
-    vieTietokantaan=() => {
+    vieTietokantaan = () => {
         console.log("Here");
-        luoPaikka(this.state, function(response) {
+        luoPaikka(this.state, function (response) {
             console.dir(response)
 
-            if(response === 201) {
+            if (response === 201) {
                 // tähän redirect
                 console.log("Perille meni!");
             }
@@ -48,7 +48,6 @@ class LisaaPaikka extends Component {
     render() {
         return (
             <div>
-
                 <Button color="primary" id="toggler" style={{ marginLeft: '1rem' }}>Lisää Paikka</Button>
                 <UncontrolledCollapse toggler="#toggler">
                     <Card>
