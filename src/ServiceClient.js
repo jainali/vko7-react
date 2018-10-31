@@ -23,6 +23,27 @@ function haePaikat(callback) {
         });
 }
 
+function haePaikanTiedot(paikkaID, callback) {
+    fetch("http://localhost:64463/api/paikka/" + paikkaID)
+        .then(function (response) {
+            if (!response.ok) {
+                var errviesti = {
+                    status: response.status,
+                    statusText: response.statusText,
+                    viesti: "haePaikat"
+                };
+                throw errviesti;
+            }
+            console.log("Datat saatu");
+            console.dir(response);
+            return response.json();
+        })
+
+        .then(function (lista) {
+            callback(lista);
+        });
+}
+
 function haePaikatKaupungissa(callback) {
     fetch(url + jotain)
         .then(function (response) {

@@ -8,12 +8,13 @@ class Paikkakortti extends Component {
 
     render() {
         return (
-            <div class="col-sm-6 col-md-6">
+            <div class="col-sm-6 col-md-6 col-lg-4">
                 <Jumbotron>
 
-                    <h1 className="display-2"><Link to={`/paikat/${this.props.paikka.Nimi}`}>{this.props.paikka.Nimi}</Link></h1>
+                    <h2><Link to={`/paikat/${this.props.paikka.Nimi}`}>{this.props.paikka.Nimi}</Link></h2>
                     {this.props.paikka.Kuvaus}<br/>
                     {/* <Button link={`/paikat/${this.props.paikka.Nimi}`>Lue lisää</Button> */}
+                
                     <Link to={`/paikat/${this.props.paikka.Nimi}`}>Lue lisää</Link>
                 </Jumbotron>
 

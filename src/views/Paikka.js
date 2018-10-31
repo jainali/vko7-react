@@ -3,6 +3,8 @@ import Paikkakuvaus from '../containers/Paikkakuvaus';
 import LisaaKommentti from '../containers/LisaaKommentti';
 import Kommentit from '../containers/Kommentit';
 import { Jumbotron} from 'reactstrap';
+import { haePaikat, haeKommentit } from '../ServiceClient';
+
 
 class Paikat extends Component {
     
@@ -10,13 +12,23 @@ class Paikat extends Component {
         kommenttidata: [],
         paikkadata: []
     }
+    constructor(props) {
+        super(props);
+        console.log("Paikka ctr");
+        console.log(props.match.params.Nimi);
+        
+        console.log()
+    }
     
     componentDidMount() {
-        this.setState({ kommenttidata: kommentit, paikkadata: paikanTiedot }, () => {
-            console.log("Here");
-            console.log(this.setState.kommenttidata);
-            console.log(this.state.paikkadata);
-        });
+        console.log("paikkaid")
+        console.log(this.props.paikkaID)
+        // haePaikka(function (paikkalista) {
+        //     this.setState({ paikkadata: paikkalista }, () => {
+        //         console.log("Paikat haettu");
+        //         console.log(this.state.paikkadata);
+        //     });
+        // }.bind(this));
     }
     
     render() {
