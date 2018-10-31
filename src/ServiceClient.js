@@ -1,5 +1,5 @@
 const localhostApi = "http://localhost:64463/api/"
-const paikkaUrl = localhostApi + "paikka";
+const paikkaUrl = localhostApi + "paikka/";
 const kommenttiUrl = localhostApi + "kommentti/";
 const placeholder = "TBD";
 var jotain = "";
@@ -135,7 +135,7 @@ function poistaKommentti(id, callback) {
 // REKISTERÖITYMINEN
 //
 function rekisteroiKayttaja(kayttaja, callback) {
-    return fetch(`${localhostApi}/account/register`, {
+    return fetch("http://localhost:64463/account/register", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(kayttaja)
@@ -157,7 +157,7 @@ function kirjauduPalvelimelle(tunnus, salasana) {
         body: JSON.stringify({ tunnus, salasana })
     }
 
-    return fetch(`${localhostApi}/account/login`, pyynto)
+    return fetch("http://localhost:64463/account/login", pyynto)
         .then(handleResponse)
         .then(user => {
             // kirjautuminen onnistui, jos palvelimen vastauksessa on Jason Web token
