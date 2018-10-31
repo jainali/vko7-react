@@ -92,7 +92,9 @@ function haeKommentitPaikasta(paikkaID, callback) {
 }
 
 function luoPaikka(paikka, callback) {
-    return fetch(placeholder + jotain, {
+    console.log("here with:");
+    console.log(paikka);
+    return fetch(paikkaUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(paikka)
@@ -109,7 +111,7 @@ function luoKommentti(kommentti, callback) {
         body: JSON.stringify(kommentti)
     })
         .then(function (response) {
-            callback(response.status);
+            callback(response);
         });
 }
 
