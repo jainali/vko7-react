@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { rekisteroiKayttaja} from '../ServiceClient';
 
 
 class Rekisteroitymisikkuna extends Component {
@@ -18,6 +19,9 @@ class Rekisteroitymisikkuna extends Component {
 
         this.setState({ Kayttajanimi: un, Password: pw, Email: em }, () => {
             console.log(this.state);
+            rekisteroiKayttaja(this.state, function(x) {
+                
+            })
         });
     }
 

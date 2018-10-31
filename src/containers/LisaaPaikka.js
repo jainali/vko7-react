@@ -1,6 +1,6 @@
-import { AvForm, AvFormGroup, AvField } from 'availity-reactstrap-validation';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 import React, { Component } from 'react';
-import { UncontrolledCollapse, Card, CardBody, Jumbotron, Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { UncontrolledCollapse, Card, CardBody, Col, Row, Button, FormGroup, Label, Input, } from 'reactstrap';
 
 class LisaaPaikka extends Component {
     state={ "Paikka_id": 1, "Kayttaja_id": 15, "Nimi": "", "Kuvaus": "", "Kategoria": "", "Katunimi": "", "Kaupunki": "", "Maa": "Suomi", "KommentienMaara": 0, "ArvostelujenSumma": 0 };

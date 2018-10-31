@@ -1,8 +1,11 @@
-const url = "TBD";
+const localhostApi = "http://localhost:64463/api/"
+const paikkaUrl = localhostApi + "paikka";
+const kommenttiUrl = localhostApi + "kommentti/";
+const placeholder = "TBD";
 var jotain = "";
 
 function haePaikat(callback) {
-    fetch("http://localhost:64463/api/paikka")
+    fetch(paikkaUrl)
         .then(function (response) {
             console.log("ServiceClient");
             if (!response.ok) {
@@ -24,7 +27,7 @@ function haePaikat(callback) {
 }
 
 function haePaikanTiedot(paikkaID, callback) {
-    fetch("http://localhost:64463/api/paikka/" + paikkaID)
+    fetch(paikkaUrl + paikkaID)
         .then(function (response) {
             if (!response.ok) {
                 var errviesti = {
@@ -45,7 +48,7 @@ function haePaikanTiedot(paikkaID, callback) {
 }
 
 function haePaikatKaupungissa(callback) {
-    fetch(url + jotain)
+    fetch(placeholder + jotain)
         .then(function (response) {
             if (!response.ok) {
                 var errviesti = {
@@ -66,30 +69,8 @@ function haePaikatKaupungissa(callback) {
         });
 }
 
-function haeKommentit(callback) {
-    fetch(url + jotain)
-        .then(function (response) {
-            if (!response.ok) {
-                var errviesti = {
-                    status: response.status,
-                    statusText: response.statusText,
-                    viesti: "haeKommentit"
-                };
-
-                throw errviesti;
-            }
-            console.log("Datat saatu");
-            console.dir(response);
-            return response.json();
-        })
-
-        .then(function (lista) {
-            callback(lista);
-        });
-}
-
 function haeKommentitPaikasta(paikkaID, callback) {
-    fetch("http://localhost:64463/api/kommentti/" + paikkaID)
+    fetch(kommenttiUrl + paikkaID)
         .then(function (response) {
             if (!response.ok) {
                 var errviesti = {
@@ -111,7 +92,7 @@ function haeKommentitPaikasta(paikkaID, callback) {
 }
 
 function luoPaikka(paikka, callback) {
-    return fetch(url + jotain, {
+    return fetch(placeholder + jotain, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(paikka)
@@ -122,7 +103,7 @@ function luoPaikka(paikka, callback) {
 }
 
 function luoKommentti(kommentti, callback) {
-    return fetch(url + jotain, {
+    return fetch(placeholder + jotain, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(kommentti)
@@ -133,7 +114,7 @@ function luoKommentti(kommentti, callback) {
 }
 
 function poistaPaikka(id, callback) {
-    return fetch(url + id, {
+    return fetch(placeholder + id, {
         method: 'DELETE'
     })
         .then(function (response) {
@@ -142,7 +123,7 @@ function poistaPaikka(id, callback) {
 }
 
 function poistaKommentti(id, callback) {
-    return fetch(url + id, {
+    return fetch(placeholder + id, {
         method: 'DELETE'
     })
         .then(function (response) {
@@ -150,4 +131,62 @@ function poistaKommentti(id, callback) {
         });
 }
 
-export { haePaikat, haePaikanTiedot, haePaikatKaupungissa, haeKommentit, haeKommentitPaikasta, luoPaikka, luoKommentti, poistaPaikka, poistaKommentti };
+//
+// REKISTERÖITYMINEN
+//
+function rekisteroiKayttaja(kayttaja, callback) {
+    return fetch(`${localhostApi}/account/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(kayttaja)
+    })
+        .then(function (response) {
+            callback(response.status);
+        });
+}
+
+
+//
+// KIRJAUTUMINEN
+//
+function kirjauduPalvelimelle(tunnus, salasana) {
+    console.log("Eteenpäin lähtee: " + tunnus +" + "+ salasana );
+    const pyynto = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tunnus, salasana })
+    }
+
+    return fetch(`${localhostApi}/account/login`, pyynto)
+        .then(handleResponse)
+        .then(user => {
+            // kirjautuminen onnistui, jos palvelimen vastauksessa on Jason Web token
+            if (user.token) {
+                // Tallennetaan käyttäjätiedot ja JWT local storageen, jotta tiedot säilössä 
+                // myös sivujen vaihtuessa
+                localStorage.setItem('user', JSON.stringify(user));
+            }
+            return user;
+        });
+}
+
+function handleResponse(response) {
+    return response.text().then(text => {
+        const data = text && JSON.parse(text);
+        if (!response.ok) {
+            if (response.status === 401) {
+                // auto logout if 401 response returned from api
+                // LOGOUT JA LOCATION EI VIELÄ TOIMI, ALLA OLEVAT RIVIT PIILOTETTU
+                // logout();
+                // location.reload(true);
+            }
+
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
+
+        return data;
+    });
+}
+
+export { rekisteroiKayttaja, kirjauduPalvelimelle, haePaikat, haePaikanTiedot, haePaikatKaupungissa, haeKommentitPaikasta, luoPaikka, luoKommentti, poistaPaikka, poistaKommentti };

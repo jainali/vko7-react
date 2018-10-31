@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import Paikkakortti from '../components/Paikkakortti';
-import {
-    Container, Row, Col, CardColumns
-} from 'reactstrap';
-import MediaQuery from 'react-responsive';
 
 // Paikkakortit-container
 // Tieto tulee Etusivu-näkymän kautta.
@@ -24,8 +20,8 @@ class Paikkakortit extends Component {
         });
 
         return (
-            <div class="container-fluid">
-                <div class="row">
+            <div className="container-fluid">
+                <div className="row">
                     {paikat}
                 </div>
             </div>

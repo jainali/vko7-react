@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { kirjauduPalvelimelle } from '../ServiceClient';
 
 class Kirjautumisikkuna extends Component {
 
@@ -10,15 +11,32 @@ class Kirjautumisikkuna extends Component {
         Password: ""
     }
 
-    rekisteroidy = () => {
+    kirjaudu = () => {
         // var un = document.getElementById("Kayttajanimikentta").value
         var pw = document.getElementById("Salasanaform").value
         var mail = document.getElementById("Sahkopostiform").value
 
         this.setState({ Password: pw, Email: mail }, () => {
             console.log(this.state);
+
+            this.lahetaPalvelimelle();
         });
     }
+
+    lahetaPalvelimelle = () => {
+        kirjauduPalvelimelle(this.state.Email, this.state.Password)
+        .then(
+            // kayttaja => { 
+            //     dispatch(success(user));
+            //     history.push('/');
+            // },
+            // error => {
+            //     dispatch(failure(error));
+            //     dispatch(alertActions.error(error));
+            // }
+        );        
+    }
+    
 
     render() {
         return (
@@ -52,7 +70,7 @@ class Kirjautumisikkuna extends Component {
                         validate={{
                             required: { value: true, errorMessage: 'Salasana pakollinen' },
                         }} />
-                    <Button color="secondary" onClick={this.rekisteroidy}>Kirjaudu sisään</Button>{' '}
+                    <Button color="secondary" onClick={this.kirjaudu}>Kirjaudu sisään</Button>{' '}
                 </AvForm>
             </Jumbotron>
         );
