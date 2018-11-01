@@ -48,8 +48,10 @@ function haePaikanTiedot(paikkaID, callback) {
         });
 }
 
-function haePaikatKaupungissa(callback) {
-    fetch(placeholder + jotain)
+function haePaikatKaupungissa(kaupunki, callback) {
+    console.log("here with:")
+    console.log(kaupunki);
+    fetch(paikkaUrl + "/kaupunki/" + kaupunki)
         .then(function (response) {
             if (!response.ok) {
                 var errviesti = {

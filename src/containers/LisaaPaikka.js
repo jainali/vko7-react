@@ -75,9 +75,18 @@ class LisaaPaikka extends Component {
             if (response === 201) {
                 // tähän redirect
                 console.log("Perille meni!");
+                // this.props.history.push('/');
+                // this.Success();
             }
-        });
+
+        }.bind(this));
     }
+
+    // Success = () => {
+    //     this.props.history.push('/Kiitos');
+    // }
+
+
 
     render() {
         return (
@@ -135,6 +144,7 @@ class LisaaPaikka extends Component {
                                         </FormGroup>
                                     </Col>
                                 </Row>
+<<<<<<< HEAD
                                 <FormGroup>
                                 <Label for="yritysKuva">Image</Label>
                                     <Input type="file" name="Paakuva" id="yritysKuva" onChange={this.handlePaakuvaChange}/>
@@ -143,6 +153,9 @@ class LisaaPaikka extends Component {
                                 </FormText>
                                 </FormGroup>
                                 <Input type="submit" value="Create" />
+=======
+                                <Input type="submit" value="Lisää" />
+>>>>>>> 77adae1203e9a4087e15a05d7e3c28b09b2576cd
                             </AvForm>
                         </CardBody>
                     </Card>

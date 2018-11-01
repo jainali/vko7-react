@@ -23,8 +23,8 @@ class Paikat extends Component {
         }.bind(this));
 
         haeKommentitPaikasta(this.props.match.params.Paikka_id, function (kommenttilista){
-            console.log("Paikan saamat kommentit:")
             this.setState({ kommenttidata: kommenttilista }, () => {
+                console.log("Paikan saamat kommentit:")
                 console.log(this.state.kommenttidata);
             });
         
