@@ -4,7 +4,8 @@ const kommenttiUrl = localhostApi + "kommentti/";
 const placeholder = "TBD";
 var jotain = "";
 
-function haePaikat(callback) {
+
+function haePaikat(callback,options) {
     fetch(paikkaUrl)
         .then(function (response) {
             console.log("ServiceClient");

@@ -1,11 +1,11 @@
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import React, { Component } from 'react';
-import { UncontrolledCollapse, Card, CardBody, Col, Row, Button, FormGroup, Label, Input, } from 'reactstrap';
+import { FormText,UncontrolledCollapse, Card, CardBody, Col, Row, Button, FormGroup, Label, Input, } from 'reactstrap';
 import { luoPaikka } from '../ServiceClient';
 
 class LisaaPaikka extends Component {
 
-    state = { "Paikka_id": 0, "Kayttaja_id": 15, "Nimi": "", "Kuvaus": "", "Kategoria": "Ravintolat", "Katuosoite": "", "Kaupunki": "", "Maa": "Suomi", "KommenttienMaara": 1, "ArvostelujenSumma": 0 };
+    state = { "Paikka_id": 0, "Kayttaja_id": 15, "Nimi": "", "Kuvaus": "", "Kategoria": "Ravintolat", "Katuosoite": "", "Kaupunki": "","Paakuva": "", "Maa": "Suomi", "KommenttienMaara": 1, "ArvostelujenSumma": 0 };
 
     handleNimiChange = (e) => {
         this.setState({ Nimi: e.target.value });
@@ -23,8 +23,41 @@ class LisaaPaikka extends Component {
         this.setState({ Kaupunki: e.target.value });
     }
 
-    handleCreateClick = (e) => {
+    handlePaakuvaChange=(e)=>{
+        
+        var kuva= e.target.files[0];
+        console.dir(kuva);
+        var reader = new FileReader();
+        reader.readAsDataURL(kuva);
+        reader.onload = function () {
+          console.log(reader.result);
+          this.setState({ Paakuva: reader.result });
+        }.bind(this); 
+       
+       // console.dir(bKuva);
+        //this.setState({Paakuva:bKuva});
         console.dir(this.state);
+        reader.onerror = function (error) {
+          console.log('Error: ', error);
+        };
+        
+        
+    }
+
+    //     function getBase64(file) {
+    //     var reader = new FileReader();
+    //     reader.readAsDataURL(file);
+    //     reader.onload = function () {
+    //       console.log(reader.result);
+    //     };
+    //     reader.onerror = function (error) {
+    //       console.log('Error: ', error);
+    //     };
+    //  }
+
+    handleCreateClick = (e) => {
+        this.setState({Paakuva:this.state.Paakuva.replace('data:image/jpeg;base64,','')});
+        console.log("CreateClick");
 
         this.vieTietokantaan();
     }
@@ -34,7 +67,8 @@ class LisaaPaikka extends Component {
     }
 
     vieTietokantaan = () => {
-        console.log("Here");
+        console.log("VieTietokantaan");
+        console.dir(this.setState);
         luoPaikka(this.state, function (response) {
             console.dir(response)
 
@@ -101,6 +135,13 @@ class LisaaPaikka extends Component {
                                         </FormGroup>
                                     </Col>
                                 </Row>
+                                <FormGroup>
+                                <Label for="yritysKuva">Image</Label>
+                                    <Input type="file" name="Paakuva" id="yritysKuva" onChange={this.handlePaakuvaChange}/>
+                                    <FormText color="muted">
+                                    Valitse yritystä edustava kuva tähän
+                                </FormText>
+                                </FormGroup>
                                 <Input type="submit" value="Create" />
                             </AvForm>
                         </CardBody>
