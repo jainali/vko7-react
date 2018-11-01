@@ -11,9 +11,7 @@ import Paikkakortti from '../components/Paikkakortti';
 class Paikkakortit extends Component {
 
     render() {
-
-
-
+        console.log("Paikkakorteissa");
         // mappaus
         var paikat = this.props.paikat.map(function (paikka) {
             return (<Paikkakortti paikka={paikka} key={paikka.Paikka_id} />);
