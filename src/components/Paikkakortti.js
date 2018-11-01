@@ -8,14 +8,10 @@ import { Jumbotron } from 'reactstrap';
 class Paikkakortti extends Component {
     
     render() {
-<<<<<<< HEAD
         var kuva="";
         if(this.props.paikka.Paakuva!=null)
             kuva='data:image/jpg;base64,'+this.props.paikka.Paakuva;
 
-=======
-        
->>>>>>> 77adae1203e9a4087e15a05d7e3c28b09b2576cd
         return (
             <div className="col-sm-6 col-md-6 col-lg-4">
                 <Jumbotron>
