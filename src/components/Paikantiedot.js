@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron } from 'reactstrap';
 import StarRatings from 'react-star-ratings';
+import Kartta from './Kartta';
 
 // Paikan tiedot
 // Paikkakuvaus-containerin kautta välitettyjen tietojen muotoilu
@@ -16,6 +17,7 @@ class Paikantiedot extends Component {
         }
         var keskiarvo = p.ArvostelujenSumma / p.KommenttienMaara
 
+        console.log(p.Latitude + " " + p.Longitude);
         return (
             <Jumbotron>
                 <h2>{p.Nimi}</h2>
@@ -30,6 +32,17 @@ class Paikantiedot extends Component {
                     starDimension="40px"
                     starSpacing="15px"
                 />
+                <div>
+                    <br />
+                    <Kartta latitude={p.Latitude} longitude={p.Longitude}/>
+                    <br/>
+                    <br/>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                </div>
             </Jumbotron>
         );
     }

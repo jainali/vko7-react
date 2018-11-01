@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Paikantiedot from '../components/Paikantiedot';
+import Kartta from '../components/Kartta';
 
 // Paikkakuvaus
 // Mapataan läpi Paikka-näkymän kautta tullut taulukko, joka sisältää paikan tiedot.
