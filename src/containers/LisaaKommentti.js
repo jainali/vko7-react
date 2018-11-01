@@ -3,6 +3,7 @@ import { UncontrolledCollapse, Card, CardBody, Col, Row, Button, FormGroup, Labe
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { luoKommentti } from '../ServiceClient';
 
+// Lisää kommentti (Paikka-näkymän sisällä)
 
 class LisaaKommentti extends Component {
 
@@ -16,13 +17,13 @@ class LisaaKommentti extends Component {
         console.log(this.state.Arvosana)
 
         this.setState({
+            
+            // Arvosana välittyy stateen vetolaatikon arvoa muutettaessa
             Paikka_id: this.props.paikanTiedot.Paikka_id,
-            Teksti: document.getElementById("Kommenttiteksti").value,
-            // Arvosana: document.getElementById("Arvosana").value
-        }, () => {
-            console.log(this.state);
+            Teksti: document.getElementById("Kommenttiteksti").value, }, () => {
+
             luoKommentti(this.state, function (response) {
-                console.log(response);
+                // console.log(response);
                 if (response === 201) {
                     // tähän redirect
                     console.log("Perille meni!");

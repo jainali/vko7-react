@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 import { Row, Col, Input, Button } from 'reactstrap';
 import { haePaikatKaupungissa } from '../ServiceClient';
 
+// Etusivun hakukenttä
+// Kentän ulkoasu ja paikkakuntatiedon välitys juurikomponentille
+
 class Hakukentta extends Component {
 
     state = {
         paikkakunnanPaikat: []
-        // paikkakunta: ""
     }
 
-    // Hakukentän käsittely 
-    // joko Hae-nappulaa tai Enteriä painamalla
+    // Hakukentän käsittely joko Hae-nappulaa tai Enteriä painamalla
     hakutoiminto = (e) => {
         console.log("haettu Hae-napilla");
         this.haetaan();
     }
-
     keyPress = (e) => {
         // console.log(e.key);
         if (e.key === 'Enter') {

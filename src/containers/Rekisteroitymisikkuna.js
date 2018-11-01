@@ -3,6 +3,7 @@ import { Jumbotron, Button } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { rekisteroiKayttaja} from '../ServiceClient';
 
+// Rekisteröitymisikkuna (Kirjaudu-näkymässä Rekisteröidy-tabin takana)
 
 class Rekisteroitymisikkuna extends Component {
 

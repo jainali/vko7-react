@@ -4,6 +4,11 @@ import Hakukentta from '../containers/Hakukentta';
 import LisaaPaikka from '../containers/LisaaPaikka';
 import { haePaikat, haePaikatKaupungissa } from '../ServiceClient';
 
+// Etusivu
+// Lataa alkuun kaikki paikkakortit
+// Haun avulla voi määrittää, minkä paikkakunnan kortit näytetään.
+// Kortteja klikkaamalla pääsee tarkastelemaan paikkaa tarkemmin (Paikka-näkymä)
+
 class Koti extends Component {
 
     state = {
@@ -17,14 +22,11 @@ class Koti extends Component {
     }
 
     componentDidMount = () => {
-        this.lataaListaUudelleen();
-
-        // haePaikat(function (paikkalista) {
-        //     this.setState({ data: paikkalista }, () => {
-        //         console.log("Alun listahaku");
-        //         console.log(this.state.data);
-        //     });
-        // }.bind(this));
+        // haetaan alkuun näkymä kaikista paikoista
+        haePaikat(function (paikkalista) {
+            this.setState({ data: paikkalista }, () => {
+            });
+        }.bind(this));
     }
 
     lataaListaUudelleen = (paikkakunta) => {

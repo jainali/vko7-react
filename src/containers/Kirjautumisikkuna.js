@@ -3,6 +3,9 @@ import { Jumbotron, Button } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { kirjauduPalvelimelle } from '../ServiceClient';
 
+// Kirjautumisikkuna (Kirjaudu-näkymässä Kirjaudu-tabin takana)
+// Kirjautuminen tapahtuu sähköpostiosoitteella backendistä johtuen, mutta valmius käyttäjänimeen
+
 class Kirjautumisikkuna extends Component {
 
     state = {
