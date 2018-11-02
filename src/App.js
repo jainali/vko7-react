@@ -36,14 +36,14 @@ class Navigaatio extends Component {
   }
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpens
+      isOpen: !this.state.isOpen
     });
   }
 
   render() {
     return (
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">ETUSIVU</NavbarBrand>
+        <NavbarBrand href="/">RANDOMPAIKKA.COM</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>

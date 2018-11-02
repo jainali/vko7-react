@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-
+import Geocode from "react-geocode";
+Geocode.setApiKey("AIzaSyBaYscfsXPx8FTJMSqMxy07RCpNlZyJrvc");
 
 class Kartta extends Component {
     render() {
@@ -34,5 +35,8 @@ export default GoogleApiWrapper({
 
 const style = {
     width: '92%',
-    height: '20%'
+    height: '180px',
+    position:'fixed',
+    bottom: 0,
+    right: 0,
 }

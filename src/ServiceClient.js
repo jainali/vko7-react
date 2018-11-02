@@ -2,7 +2,6 @@ const localhostApi = "http://localhost:64463/api/"
 const paikkaUrl = localhostApi + "paikka/";
 const kommenttiUrl = localhostApi + "kommentti/";
 const placeholder = "TBD";
-var jotain = "";
 
 
 function haePaikat(callback,options) {

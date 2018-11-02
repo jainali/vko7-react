@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 
 class Kommentti extends Component {
     render() {
+        
         return (
             <div>
                 Arvosana: {this.props.kommentti.Arvosana}<br/>

@@ -4,7 +4,6 @@ import LisaaKommentti from '../containers/LisaaKommentti';
 import Kommentit from '../containers/Kommentit';
 import { Jumbotron} from 'reactstrap';
 import { haePaikanTiedot, haeKommentitPaikasta } from '../ServiceClient';
-import Kartta from '../components/Kartta';
 
 class Paikat extends Component {
     

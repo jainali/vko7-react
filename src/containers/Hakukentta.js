@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Input, Button } from 'reactstrap';
-import { haePaikatKaupungissa } from '../ServiceClient';
+import { Input, Button } from 'reactstrap';
 
 // Etusivun hakukenttä
 // Kentän ulkoasu ja paikkakuntatiedon välitys juurikomponentille
@@ -28,14 +27,15 @@ class Hakukentta extends Component {
     haetaan = () => {
         // Tässä välitetään juurikomponentille paikkakunnan nimi,
         // jotta paikkakortit ladataan oikealle paikkakunnalle
-        this.props.paikkaHaku(document.getElementById("Paikkakuntahaku").value);        
+        this.props.paikkaHaku(document.getElementById("Paikkakuntahaku").value);
     }
 
     render() {
         return (
-            <div>
-                <Row>
-                    <Col sm={11}>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-sm-10">
+
                         <Input
                             type="text"
                             id="Paikkakuntahaku"
@@ -43,11 +43,11 @@ class Hakukentta extends Component {
                             placeholder="Kirjoita paikkakunta"
                             onKeyPress={this.keyPress}
                         />
-                    </Col>
-                    <Col sm={1}>
+                    </div>
+                    <div className="col-sm-2">
                         <Button color="primary" onClick={this.hakutoiminto}>Hae</Button>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
             </div>
         );
     }
